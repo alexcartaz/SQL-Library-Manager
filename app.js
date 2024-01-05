@@ -15,11 +15,11 @@ var app = express();
 //connect to db
 (async () => {
   try {
-    await db.authenticate();
+    await db.sequelize.authenticate();
     console.log('Connection to the database successful!');
     //sync model with db
-    db.sync().then(() => {
-      server.listen(port);
+    db.sequelize.sync().then(() => {
+      //server.listen(port);
     });
   } catch (error) {
     console.error('Error connecting to the database: ', error);
