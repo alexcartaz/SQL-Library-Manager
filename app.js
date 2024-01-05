@@ -7,7 +7,26 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const db = require('./models/index');
+const Book = require('./models/book');
+
 var app = express();
+
+//connect to db
+(async () => {
+  try {
+    await db.authenticate();
+    console.log('Connection to the database successful!');
+    //sync model with db
+    db.sync().then(() => {
+      server.listen(port);
+    });
+  } catch (error) {
+    console.error('Error connecting to the database: ', error);
+  }
+})();
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
