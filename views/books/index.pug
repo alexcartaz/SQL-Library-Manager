@@ -1,0 +1,46 @@
+extends ../layout
+
+block content 
+
+    .page-container 
+        h1 Books
+        .button-container
+            a.button(href='/books/new-book') Create New Book
+        .search-container
+            form(action='#', method='get')
+                input.search-input(type='search', name='search', placeholder='Search...', value=search)
+                input.search-submit(type='submit', value='search')
+        br
+
+        if books.length == 0
+            h3 No results! Please try another search
+            br
+            p
+            a.button(href='/books') Home
+        else
+            .table-container
+                table
+                    thead
+                        tr
+                            th Title
+                            th Author
+                            th Genre
+                            th Year
+                    tbody
+                        each book in books
+                            tr
+                                td
+                                    a(href='/books/' + book.id)= book.title
+                                td= book.author
+                                td= book.genre
+                                td= book.year
+                
+                div.pagination-container
+                    form(method='get' action='/books')
+                        if search
+                            input(type='hidden' name='search' value=search)
+                        each _, i in Array(numberOfPages)
+                            if i+1 == pageNum
+                                button.active.page(type='submit' name='page' value=`${i+1}`)= i+1
+                            else
+                                button.page(type='submit' name='page' value=`${i+1}`)=i+1

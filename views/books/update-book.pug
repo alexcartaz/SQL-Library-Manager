@@ -1,0 +1,52 @@
+extends ../layout
+
+block content 
+    
+    .page-container
+        h1= title  
+
+        if(errors)
+            .error-container
+                h2 Ooops!
+                ul.error 
+                each error in errors 
+                    li 
+                        =error.message
+
+        .input-container
+
+            form(action="/books/" + book.id, method="post")
+                .input-row 
+                    .input-left-column 
+                        label(for='title') Title
+                    .input-right-column 
+                        input#title(name='title' type='text' value= book.title)
+                .input-row 
+                    .input-left-column 
+                        label(for='author') Author
+                    .input-right-column 
+                        input#author(name='author' type='text' value= book.author)
+                .input-row 
+                    .input-left-column 
+                        label(for='genre') Genre
+                    .input-right-column 
+                        input#genre(name='genre' type='text' value= book.genre)
+                .input-row 
+                    .input-left-column 
+                        label(for='year') Year
+                    .input-right-column 
+                        input#year(name='year' type='text' value = book.year)
+                .input-row 
+                    .input-left-column 
+                    .input-right-column
+                        input.input-submit(type='submit' value='Update Book')
+                .input-row 
+                    .input-left-column 
+                    .input-right-column
+                        a.button(href='/books/') Cancel
+                
+            form(method='post', action='/books/' + book.id + '/delete' onsubmit="return confirm('Do you really want to delete this book?');")
+                .input-row 
+                    .input-left-column 
+                    .input-right-column
+                        input.input-submit(type='submit' value='Delete Book')

@@ -1,42 +1,38 @@
-'use strict';
-const {
-  Model
-} = require('sequelize');
+"use strict";
+
+/**
+ * Define a database model to be exported, with tables names, data types, and validation
+ *
+ * @param {promise-based ORM (object relational mapping) tool} sequelize
+ * @param {Define type of data for sequelize} DataTypes
+ * @returns table named Book to store data
+ */
+
 module.exports = (sequelize, DataTypes) => {
-  class Book extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    static associate(models) {
-      // define association here
-    }
-  }
-  Book.init({
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: '"Title" is required'
-        }
-      }
+  const Book = sequelize.define(
+    "Book",
+    {
+      title: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "Please provide a value for title",
+          },
+        },
+      },
+      author: {
+        type: DataTypes.STRING,
+        validate: {
+          notEmpty: {
+            msg: "Please provide a value for author",
+          },
+        },
+      },
+      genre: DataTypes.STRING,
+      year: DataTypes.INTEGER,
     },
-    author: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: '"Author" is required'
-        }
-      }
-    },
-    genre: DataTypes.STRING,
-    year: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Book',
-  });
+    {}
+  ); 
+
   return Book;
 };

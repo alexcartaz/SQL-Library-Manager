@@ -1,8 +1,143 @@
+
 body {
-  padding: 50px;
+  padding: 3%;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+* {
+  /*border: 1px solid red;*/
+  margin: 0px;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.page-container {
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1200px;
+}
+
+h1 {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.error-container {
+  width: 60%;
+  border-top: solid #e7e7e7 2px;
+  color: red;
+}
+
+h2 {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.input-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 15px;
+}
+
+form {
+  width: 100%;
+}
+
+.input-row {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.input-left-column {
+  width: 15%;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.input-right-column {
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  height: 30px;
+  width: 300px;
+}
+
+.button-container {
+  width: 100%;
+  height: 35px;
+  display: flex;
 }
 
 a {
-  color: #00B7FF;
+  color: #439678;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.button {
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  background-color: #439678;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.input-submit {
+  all: unset;
+  color: white;
+  padding: 10px 15px;
+  font-weight: bold;
+  background-color: #439678;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.search-container {
+  padding-top: 10px;
+}
+
+.table-container {
+  width: 100%;
+}
+
+table {
+  padding-top: 10px;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  padding: 5px;
+  border-bottom: 2px solid #D1B597;
+}
+
+td {
+  padding: 5px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e7e7e7;
+}
+
+.pagination-container {
+  margin-top: 15px;
+  display: flex;
+}
+
+.page {
+  margin-right: 5px;
 }
